@@ -2,8 +2,8 @@ import React from 'react';
 
 const Search = () => {
   return (
-    <form className="flex justify-center items-center px-8">
-      <div className=" bg-white shadow flex flex-1 items-center px-4">
+    <form className="mb-10 flex md:w-1/3 justify-center items-center px-8">
+      <div className="bg-white shadow flex w-3/4 md:w-full items-center px-4">
         <span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@ const Search = () => {
           </svg>
         </span>
         <input
-          className=" placeholder:text-Dark-Gray placeholder:text-sm w-full p-2 outline-none bg-transparent"
+          className="w-full placeholder:text-Dark-Gray p-2 outline-none bg-transparent"
           placeholder="Search for a country..."
           type="search"
         />
