@@ -26,6 +26,9 @@ const Search = () => {
           className="w-full placeholder:text-Dark-Gray p-2 outline-none bg-transparent"
           placeholder="Search for a country..."
           type="search"
+          onChange={(event) => {
+            countryCtx.searchWordHandler(event.target.value);
+          }}
         />
       </div>
     </form>

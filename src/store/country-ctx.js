@@ -2,6 +2,8 @@ import React from 'react';
 
 const CountryCtx = React.createContext({
   searchWord: '',
-  onChangeHandler(data) {},
+  selectWord: '',
+  searchhWordHandler(data) {},
+  selectWordHandler(data) {},
 });
 export default CountryCtx;

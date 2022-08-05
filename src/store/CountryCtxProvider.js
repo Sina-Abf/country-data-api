@@ -3,14 +3,20 @@ import CountryCtx from './country-ctx';
 
 const CountryCtxProvider = (props) => {
   const [searchWord, setSearchWord] = useState('');
+  const [selectWord, setSelectWord] = useState('');
 
-  const onChangeHander = (data) => {
+  const onSearchChangeHander = (data) => {
     setSearchWord(data);
+  };
+  const onSelectChangeHandler = (data) => {
+    setSelectWord(data);
   };
 
   const initialValue = {
-    onChangeHander(data) {},
+    searchWordHandler: onSearchChangeHander,
+    selectWordHandler: onSelectChangeHandler,
     searchWord,
+    selectWord,
   };
   return (
     <CountryCtx.Provider value={initialValue}>
