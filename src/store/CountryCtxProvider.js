@@ -7,9 +7,11 @@ const CountryCtxProvider = (props) => {
 
   const onSearchChangeHander = (data) => {
     setSearchWord(data);
+    setSelectWord('');
   };
   const onSelectChangeHandler = (data) => {
     setSelectWord(data);
+    setSearchWord('');
   };
 
   const initialValue = {

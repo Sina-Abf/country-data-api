@@ -5,7 +5,7 @@ const Dropdown = (props) => {
   const countryCtx = useContext(CountryCtx);
 
   const regionChangeHandler = (event) => {
-    countryCtx.selectWordHandler(event.target.value);
+    countryCtx.selectWordHandler(event.target.value.toLowerCase());
     console.log(event.target.value);
   };
 

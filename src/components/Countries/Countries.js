@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from 'react';
 import CountryCtx from '../../store/country-ctx';
 import CountriesItem from './CountriesItem';
+import { motion } from 'framer-motion';
 
 const Countries = (props) => {
   const [countryData, setCountryData] = useState([]);
@@ -20,17 +21,20 @@ const Countries = (props) => {
 
   if (countryCtx.searchWord) {
     filteredCountryData = filteredCountryData.filter((country) =>
-      country.name.common.includes(countryCtx.searchWord)
+      country.name.common.toLowerCase().includes(countryCtx.searchWord)
     );
   }
   if (countryCtx.selectWord) {
     filteredCountryData = filteredCountryData.filter(
-      (country) => country.region === countryCtx.selectWord
+      (country) => country.region.toLowerCase() === countryCtx.selectWord
     );
   }
 
   return (
-    <ul className="grid grid-cols-1 items-center gap-4 md:grid-cols-2 md:gap-6 md:px-8 lg:grid-cols-4 ">
+    <motion.ul
+      layout
+      className="grid grid-cols-1 items-center gap-4 md:grid-cols-2 md:gap-6 md:px-8 lg:grid-cols-4 "
+    >
       {filteredCountryData.map((country) => {
         return (
           <CountriesItem
@@ -43,7 +47,7 @@ const Countries = (props) => {
           />
         );
       })}
-    </ul>
+    </motion.ul>
   );
 };
 

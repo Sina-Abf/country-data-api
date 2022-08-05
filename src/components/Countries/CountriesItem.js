@@ -1,8 +1,15 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const CountriesItem = (props) => {
   return (
-    <li className="bg-white w-1/2 h-full mx-auto md:w-full my-4 shadow-lg rounded overflow-hidden">
+    <motion.li
+      layout
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      className="bg-white w-1/2 h-full mx-auto md:w-full my-4 shadow-lg rounded overflow-hidden"
+    >
       <div className="w-full h-3/5">
         <img className="w-full h-full" src={props.img} alt={props.name} />
       </div>
@@ -20,7 +27,7 @@ const CountriesItem = (props) => {
           </p>
         </div>
       </div>
-    </li>
+    </motion.li>
   );
 };
 

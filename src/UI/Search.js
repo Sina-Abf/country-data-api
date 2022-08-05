@@ -4,7 +4,7 @@ import CountryCtx from '../store/country-ctx';
 const Search = () => {
   const countryCtx = useContext(CountryCtx);
   return (
-    <form className="mb-10 flex md:w-1/3 justify-center items-center px-8">
+    <form className="mb-10 flex md:w-3/5 lg:w-1/3  justify-center items-center px-8">
       <div className="bg-white shadow flex w-3/4 md:w-full items-center px-4">
         <span>
           <svg
@@ -27,7 +27,7 @@ const Search = () => {
           placeholder="Search for a country..."
           type="search"
           onChange={(event) => {
-            countryCtx.searchWordHandler(event.target.value);
+            countryCtx.searchWordHandler(event.target.value.toLowerCase());
           }}
         />
       </div>
