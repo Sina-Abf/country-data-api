@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import CountryCtx from '../store/country-ctx';
 
 const Search = () => {
+  const countryCtx = useContext(CountryCtx);
   return (
     <form className="mb-10 flex md:w-1/3 justify-center items-center px-8">
       <div className="bg-white shadow flex w-3/4 md:w-full items-center px-4">

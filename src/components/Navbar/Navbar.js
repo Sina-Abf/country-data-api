@@ -2,7 +2,7 @@ import React from 'react';
 import Dropdown from '../../UI/Dropdown';
 import Search from '../../UI/Search';
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <>
       <nav className="bg-white shadow mb-5">
@@ -25,9 +25,7 @@ const Navbar = () => {
                 />
               </svg>
             </span>
-            <p className="font-semibold md:text-xl text-sm md:text-lg">
-              Dark Mode
-            </p>
+            <p className="font-semibold md:text-xl text-sm">Dark Mode</p>
           </div>
         </div>
       </nav>
