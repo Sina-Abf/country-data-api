@@ -13,10 +13,10 @@ const Dropdown = (props) => {
   };
 
   return (
-    <div className="px-4 w-1/3  mb-12">
+    <div className="px-4 w-2/3 mb-12 mx-auto md:mx-0 md:w-1/3">
       <select
         onChange={regionChangeHandler}
-        className="w-full dark:bg-Dark-Blue dark:text-white shadow p-2 outline-none"
+        className="w-full transition-all duration-500 dark:bg-Dark-Blue dark:text-white shadow p-2 outline-none"
       >
         <option>Filter by Region</option>
         <option>Africa</option>

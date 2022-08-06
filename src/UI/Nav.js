@@ -12,9 +12,9 @@ const Nav = () => {
     setDarkmode(checked);
   };
   return (
-    <nav className="bg-white dark:bg-Dark-Blue shadow mb-5">
+    <nav className="bg-white dark:bg-Dark-Blue transition-all duration-500 shadow mb-5">
       <div className="flex items-center justify-between p-5">
-        <h1 className="font-extrabold md:text-xl dark:text-white">
+        <h1 className="font-extrabold md:text-2xl dark:text-white">
           Where in the world?
         </h1>
         <div
@@ -38,7 +38,7 @@ const Nav = () => {
               />
             </svg>
           </span>
-          <p className="dark:text-white font-semibold select-none md:text-xl text-sm">
+          <p className="dark:text-white font-semibold select-none md:text-2xl text-sm">
             Dark Mode
           </p>
         </div>

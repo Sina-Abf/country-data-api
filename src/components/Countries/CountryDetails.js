@@ -35,8 +35,6 @@ const CountryDetails = () => {
     });
   }, [params.countryId]);
 
-  console.log(countryData);
-
   return (
     <section className="min-h-screen">
       <Nav />

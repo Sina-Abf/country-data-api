@@ -12,7 +12,7 @@ const Countries = () => {
   const [hasError, setHasError] = useState(null);
   const [countryData, setCountryData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [countriesPerPage, setPostsPerPage] = useState(20);
+  const [countriesPerPage, setPostsPerPage] = useState(18);
 
   const countryCtx = useContext(CountryCtx);
 
@@ -79,7 +79,7 @@ const Countries = () => {
       {!isLoading && !hasError && (
         <motion.ul
           layout
-          className="grid grid-cols-1 items-center gap-4 md:grid-cols-2 md:gap-6 md:px-8 lg:grid-cols-4 "
+          className="grid grid-cols-1 items-center gap-4 md:grid-cols-2 md:gap-10 md:px-8 lg:grid-cols-3 "
         >
           {filteredCountryData.map((country) => {
             return (

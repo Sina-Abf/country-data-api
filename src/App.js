@@ -5,7 +5,7 @@ import CountryDetails from './components/Countries/CountryDetails';
 
 function App() {
   return (
-    <div className="font-Nunito min-h-screen dark:bg-Very-Dark-Blue2">
+    <div className="font-Nunito min-h-screen dark:bg-Very-Dark-Blue2 transition-all duration-500">
       <Routes>
         <Route path="/" element={<Navigate to="/1" />} />
         <Route

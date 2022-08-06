@@ -9,7 +9,9 @@ const CountriesItem = (props) => {
       animate={{ opacity: 1 }}
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
-      className="bg-white dark:bg-Dark-Blue dark:text-white w-2/3 h-full mx-auto md:w-full my-4 shadow-lg rounded overflow-hidden"
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.8 }}
+      className="bg-white transition-colors duration-500 dark:bg-Dark-Blue dark:text-white w-2/3 h-full mx-auto md:w-full my-4 shadow-xl dark:shadow-2xl rounded overflow-hidden"
     >
       <Link to={`${props.name}`}>
         <div className="w-full h-3/5">
