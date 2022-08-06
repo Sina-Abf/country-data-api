@@ -1,14 +1,15 @@
 import Countries from './components/Countries/Countries';
 import Navbar from './components/Navbar/Navbar';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import CountryDetails from './components/Countries/CountryDetails';
 
 function App() {
   return (
     <div className="font-Nunito">
       <Routes>
+        <Route path="/" element={<Navigate to="/1" />} />
         <Route
-          path="/"
+          path="/:pageNum"
           element={
             <>
               <Navbar />
@@ -16,7 +17,7 @@ function App() {
             </>
           }
         />
-        <Route path=":countryId" element={<CountryDetails />} />
+        <Route path="/:pageNum/:countryId" element={<CountryDetails />} />
       </Routes>
     </div>
   );
