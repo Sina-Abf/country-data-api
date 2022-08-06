@@ -44,15 +44,15 @@ const Countries = () => {
   );
 
   let filteredCountryData = [...currentCountries];
-  console.log(filteredCountryData);
 
   if (countryCtx.searchWord) {
-    console.log(countryCtx.searchWord);
+    filteredCountryData = [...countryData];
     filteredCountryData = filteredCountryData.filter((country) =>
       country.name.common.toLowerCase().includes(countryCtx.searchWord)
     );
   }
   if (countryCtx.selectWord) {
+    filteredCountryData = [...countryData];
     filteredCountryData = filteredCountryData.filter(
       (country) => country.region.toLowerCase() === countryCtx.selectWord
     );
@@ -61,6 +61,7 @@ const Countries = () => {
   const changePaginateHandler = useCallback(() => {
     const pageNum = params.pageNum;
     setCurrentPage(pageNum);
+    countryCtx.searchWordHandler('');
   }, [params.pageNum]);
 
   useEffect(() => {

@@ -12,10 +12,10 @@ const Pagination = (props) => {
     pageNumbers.push(i);
   }
   return (
-    <ul className="flex justify-center items-center mt-5 gap-x-4">
+    <ul className="flex justify-center items-center mt-5 gap-x-4 p-4">
       {pageNumbers.map((number) => {
         return (
-          <li key={number} className="rounded text-lg">
+          <li key={number} className="rounded text-lg text-white">
             <NavLink
               onClick={props.onClick}
               to={`/${number}`}

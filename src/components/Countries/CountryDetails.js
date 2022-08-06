@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import Nav from '../../UI/Nav';
 import Spinner from '../../UI/Spinner';
 import CountryDetailItem from './CountryDetailItem';
 
@@ -37,35 +38,12 @@ const CountryDetails = () => {
   console.log(countryData);
 
   return (
-    <>
-      <nav className="bg-white shadow mb-5">
-        <div className="flex items-center justify-between p-5">
-          <h1 className="font-extrabold md:text-xl">Where in the world?</h1>
-          <div className="flex gap-x-3 items-center">
-            <span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 md:h-6 md:w-6 lg:h-8 lg:w-8"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-                />
-              </svg>
-            </span>
-            <p className="font-semibold md:text-xl text-sm">Dark Mode</p>
-          </div>
-        </div>
-      </nav>
+    <section className="min-h-screen">
+      <Nav />
       <div className="p-4">
         <button
           onClick={() => navigate(-1)}
-          className="flex items-center justify-center gap-x-2 rounded shadow-lg px-4"
+          className="dark:text-white dark:bg-Dark-Blue flex items-center justify-center gap-x-2 rounded shadow-lg px-4 py-1"
         >
           <span>
             <svg
@@ -107,19 +85,13 @@ const CountryDetails = () => {
                 capital={country.capital}
                 currencies={Object.values(country.currencies)[0].name}
                 languages={Object.values(country.languages)[0]}
-                borders={
-                  country.borders || [
-                    'no exisiting',
-                    'no exisiting',
-                    'no exisiting',
-                  ]
-                }
+                borders={country.borders || ['-', '-', '-']}
               />
             );
           })}
         </ul>
       )}
-    </>
+    </section>
   );
 };
 
