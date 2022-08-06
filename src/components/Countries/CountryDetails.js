@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import Spinner from '../../UI/Spinner';
 import CountryDetailItem from './CountryDetailItem';
 
 const CountryDetails = () => {
@@ -22,16 +23,19 @@ const CountryDetails = () => {
       }
 
       const data = await response.json();
+
       setIsLoading(false);
 
-      setCountryData(data);
+      setCountryData(data.slice(0, 1));
     };
     apiQuery().catch((err) => {
       setHasError(err.message);
       setIsLoading(false);
     });
-  }, []);
+  }, [params.countryId]);
+
   console.log(countryData);
+
   return (
     <>
       <nav className="bg-white shadow mb-5">
@@ -82,24 +86,39 @@ const CountryDetails = () => {
           <span>Back</span>
         </button>
       </div>
-      <ul>
-        {countryData.map((country) => {
-          return (
-            <CountryDetailItem
-              key={country.name.common}
-              name={country.name.common}
-              img={country.flags.png}
-              nativeName={Object.values(country.name.nativeName)[0].official}
-              population={country.population}
-              region={country.region}
-              subRegion={country.subregion}
-              capital={country.capital}
-              currencies={Object.values(country.currencies)[0].name}
-              languages={Object.values(country.languages)[0]}
-            />
-          );
-        })}
-      </ul>
+      {isLoading && <Spinner />}
+      {hasError && !isLoading && (
+        <p className="text-center font-bold text-2xl">
+          {hasError}, Please Try Again..
+        </p>
+      )}
+      {!isLoading && !hasError && (
+        <ul>
+          {countryData.map((country) => {
+            return (
+              <CountryDetailItem
+                key={country.name.common}
+                name={country.name.common}
+                img={country.flags.png}
+                nativeName={Object.values(country.name.nativeName)[0].official}
+                population={country.population}
+                region={country.region}
+                subRegion={country.subregion}
+                capital={country.capital}
+                currencies={Object.values(country.currencies)[0].name}
+                languages={Object.values(country.languages)[0]}
+                borders={
+                  country.borders || [
+                    'no exisiting',
+                    'no exisiting',
+                    'no exisiting',
+                  ]
+                }
+              />
+            );
+          })}
+        </ul>
+      )}
     </>
   );
 };

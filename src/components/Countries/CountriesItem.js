@@ -9,7 +9,7 @@ const CountriesItem = (props) => {
       animate={{ opacity: 1 }}
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
-      className="bg-white w-1/2 h-full mx-auto md:w-full my-4 shadow-lg rounded overflow-hidden"
+      className="bg-white w-2/3 h-full mx-auto md:w-full my-4 shadow-lg rounded overflow-hidden"
     >
       <Link to={`${props.name}`}>
         <div className="w-full h-3/5">
