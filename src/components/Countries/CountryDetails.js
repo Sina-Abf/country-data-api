@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import CountryDetailItem from './CountryDetailItem';
 
 const CountryDetails = () => {
@@ -8,7 +8,7 @@ const CountryDetails = () => {
   const [countryData, setCountryData] = useState([]);
 
   const params = useParams();
-  console.log(params.countryId);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const apiQuery = async () => {
@@ -32,7 +32,6 @@ const CountryDetails = () => {
     });
   }, []);
   console.log(countryData);
-
   return (
     <>
       <nav className="bg-white shadow mb-5">
@@ -60,7 +59,10 @@ const CountryDetails = () => {
         </div>
       </nav>
       <div className="p-4">
-        <button className="flex items-center justify-center gap-x-2 rounded shadow-lg px-4">
+        <button
+          onClick={() => navigate(-1)}
+          className="flex items-center justify-center gap-x-2 rounded shadow-lg px-4"
+        >
           <span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -84,14 +86,16 @@ const CountryDetails = () => {
         {countryData.map((country) => {
           return (
             <CountryDetailItem
+              key={country.name.common}
               name={country.name.common}
               img={country.flags.png}
-              //   nativeName={country.name.nativeName}
+              nativeName={Object.values(country.name.nativeName)[0].official}
               population={country.population}
               region={country.region}
               subRegion={country.subregion}
               capital={country.capital}
-              currencies={country.currencies.USD.name}
+              currencies={Object.values(country.currencies)[0].name}
+              languages={Object.values(country.languages)[0]}
             />
           );
         })}
