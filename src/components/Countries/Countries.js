@@ -47,6 +47,7 @@ const Countries = () => {
   console.log(filteredCountryData);
 
   if (countryCtx.searchWord) {
+    console.log(countryCtx.searchWord);
     filteredCountryData = filteredCountryData.filter((country) =>
       country.name.common.toLowerCase().includes(countryCtx.searchWord)
     );
@@ -79,7 +80,7 @@ const Countries = () => {
           layout
           className="grid grid-cols-1 items-center gap-4 md:grid-cols-2 md:gap-6 md:px-8 lg:grid-cols-4 "
         >
-          {currentCountries.map((country) => {
+          {filteredCountryData.map((country) => {
             return (
               <CountriesItem
                 key={country.name.official}
