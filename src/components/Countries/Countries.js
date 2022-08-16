@@ -1,10 +1,12 @@
+import React, { Suspense } from 'react';
 import { useEffect, useState, useCallback, useContext } from 'react';
 import CountryCtx from '../../store/country-ctx';
-import CountriesItem from './CountriesItem';
 import { motion } from 'framer-motion';
 import Spinner from '../../UI/Spinner';
 import Pagination from './Pagination';
 import { useParams } from 'react-router-dom';
+
+const CountriesItem = React.lazy(() => import('./CountriesItem'));
 
 const Countries = () => {
   const params = useParams();
@@ -12,7 +14,7 @@ const Countries = () => {
   const [hasError, setHasError] = useState(null);
   const [countryData, setCountryData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [countriesPerPage, setPostsPerPage] = useState(18);
+  const [countriesPerPage] = useState(18);
 
   const countryCtx = useContext(CountryCtx);
 
@@ -62,6 +64,7 @@ const Countries = () => {
     const pageNum = params.pageNum;
     setCurrentPage(pageNum);
     countryCtx.searchWordHandler('');
+    window.scrollTo(0, 0);
   }, [params.pageNum]);
 
   useEffect(() => {
@@ -83,14 +86,16 @@ const Countries = () => {
         >
           {filteredCountryData.map((country) => {
             return (
-              <CountriesItem
-                key={country.name.official}
-                population={country.population}
-                capital={country.capital}
-                region={country.region}
-                img={country.flags.png}
-                name={country.name.common}
-              />
+              <Suspense fallback={<Spinner />}>
+                <CountriesItem
+                  key={country.name.official}
+                  population={country.population}
+                  capital={country.capital}
+                  region={country.region}
+                  img={country.flags.png}
+                  name={country.name.common}
+                />
+              </Suspense>
             );
           })}
         </motion.ul>
