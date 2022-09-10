@@ -26,7 +26,7 @@ const CountriesItem = (props) => {
             <p className="font-semibold dark:font-medium text-sm md:text-lg">
               Region: {props.region}
             </p>
-            <p className="font-semibold dark:font-medium text-sm md:text-lg">
+            <p className="font-semibold dark:font-medium text-sm md:text-lg pb-5 md:pb-0">
               Capital: {props.capital}
             </p>
           </div>

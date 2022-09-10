@@ -59,17 +59,14 @@ const CountryDetailItem = (props) => {
           <span className="mr-2 font-semibold dark:font-medium md:text-xl">
             Languages:
           </span>
-          <span className="md:text-xl dark:font-medium">
-            {' '}
-            {props.languages}
-          </span>
+          <span className="md:text-xl dark:font-medium">{props.languages}</span>
         </div>
       </div>
       <div className="md:col-start-3">
         <h1 className="font-bold dark:text-white dark:font-medium mb-4 px-6 md:px-0 md:text-xl">
           Border Countries:
         </h1>
-        <div className="flex justify-center items-center gap-x-5 ">
+        <div className="flex justify-center items-center gap-x-5 pb-4 md:pb-0">
           <span className="px-6 md:text-lg shadow-[0.5px_-0.5px_5px_rgba(0,0,0,0.2)] bg-white dark:bg-Dark-Blue dark:text-white">
             {props.borders[0] || '-'}
           </span>

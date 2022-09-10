@@ -13,19 +13,19 @@ const Nav = () => {
   };
   return (
     <nav className="bg-white dark:bg-Dark-Blue transition-all duration-500 shadow mb-5">
-      <div className="flex items-center justify-between p-5">
-        <h1 className="font-extrabold md:text-2xl dark:text-white">
+      <div className="flex items-center justify-between gap-x-4 p-5">
+        <h1 className="font-extrabold text-lg md:text-2xl dark:text-white">
           Where in the world?
         </h1>
         <div
           checked={darkMode}
           onClick={toggleDarkMode}
-          className="flex gap-x-3 items-center cursor-pointer"
+          className="flex gap-x-1 items-center cursor-pointer"
         >
           <span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 md:h-6 md:w-6 lg:h-8 lg:w-8 dark:text-white"
+              className="h-7 w-7 md:h-8 md:w-8 lg:h-9 lg:w-9 dark:text-white"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -38,7 +38,7 @@ const Nav = () => {
               />
             </svg>
           </span>
-          <p className="dark:text-white font-semibold select-none md:text-2xl text-sm">
+          <p className="dark:text-white font-semibold select-none md:text-2xl text-lg">
             Dark Mode
           </p>
         </div>
