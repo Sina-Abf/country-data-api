@@ -2,7 +2,7 @@ import Dropdown from '../../UI/Dropdown';
 import Nav from '../../UI/Nav';
 import Search from '../../UI/Search';
 
-const Navbar = (props) => {
+const Navbar = () => {
   return (
     <>
       <Nav />

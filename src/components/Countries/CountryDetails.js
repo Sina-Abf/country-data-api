@@ -1,39 +1,27 @@
-import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import useCountries from '../../hooks/useCountries';
 import Nav from '../../UI/Nav';
 import Spinner from '../../UI/Spinner';
 import CountryDetailItem from './CountryDetailItem';
 
 const CountryDetails = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [hasError, setHasError] = useState(null);
-  const [countryData, setCountryData] = useState([]);
-
   const params = useParams();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const apiQuery = async () => {
-      setIsLoading(true);
-      const response = await fetch(
-        `https://restcountries.com/v3.1/name/${params.countryId}`
-      );
+  const { data, isLoading, isError, error } = useCountries();
 
-      if (!response.ok) {
-        throw new Error('Something Went Wrong!');
-      }
+  if (isLoading) return <Spinner />;
 
-      const data = await response.json();
+  if (isError && !isLoading)
+    return (
+      <p className="text-center font-bold text-2xl text-white">
+        {error.message}, Please Try Again..
+      </p>
+    );
 
-      setIsLoading(false);
-
-      setCountryData(data.slice(0, 1));
-    };
-    apiQuery().catch((err) => {
-      setHasError(err.message);
-      setIsLoading(false);
-    });
-  }, [params.countryId]);
+  const filteredData = data.find(
+    (country) => country.name.common === params.countryId
+  );
 
   return (
     <section className="min-h-screen">
@@ -62,33 +50,9 @@ const CountryDetails = () => {
           <span>Back</span>
         </button>
       </div>
-      {isLoading && <Spinner />}
-      {hasError && !isLoading && (
-        <p className="text-center font-bold text-2xl">
-          {hasError}, Please Try Again..
-        </p>
-      )}
-      {!isLoading && !hasError && (
-        <ul>
-          {countryData.map((country) => {
-            return (
-              <CountryDetailItem
-                key={country.name.common}
-                name={country.name.common}
-                img={country.flags.png}
-                nativeName={Object.values(country.name.nativeName)[0].official}
-                population={country.population}
-                region={country.region}
-                subRegion={country.subregion}
-                capital={country.capital}
-                currencies={Object.values(country.currencies)[0].name}
-                languages={Object.values(country.languages)[0]}
-                borders={country.borders || ['-', '-', '-']}
-              />
-            );
-          })}
-        </ul>
-      )}
+      <ul>
+        <CountryDetailItem data={filteredData} />
+      </ul>
     </section>
   );
 };
