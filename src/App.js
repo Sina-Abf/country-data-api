@@ -8,7 +8,7 @@ function App() {
   const queryClient = new QueryClient();
 
   return (
-    <div className="font-Nunito min-h-screen dark:bg-Very-Dark-Blue2 transition-all duration-500 h-1 scrollbar scrollbar-thumb-Very-Dark-Blue2 scrollbar-track-Dark-Gray">
+    <div className="font-Nunito min-h-screen dark:bg-Very-Dark-Blue2 transition-all duration-500 dark:h-1 dark:scrollbar dark:scrollbar-thumb-Very-Dark-Blue2 dark:scrollbar-track-Dark-Gray">
       <QueryClientProvider client={queryClient}>
         <Routes>
           <Route path="/" element={<Navigate to="/1" />} />
